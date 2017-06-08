@@ -1,21 +1,71 @@
-<h1>show</h1>
+<h1 align="center"><%= @user.firstname + " " + @user.lastname %></h1>
 
-<p>
-	<%= image_tag @user.image.thumb.url %>
-</p>
+<div align="center" class="user-img">
+	<%= image_tag(@user.image.thumb.url, size: "500x500") %>
+</div>
 
-<p>
-	Firstname : <%= @user.firstname %>
-</p>
+<div class="row">
+	<div class="col-md-10">
+		<div class="col-xs-2 col-xs-offset-1">
+			<p>Firstname : </p>
+		</div>
+		<div class="col-xs-7">
+			<p><%= @user.firstname %></p>
+		</div>
+	</div>
+</div>
 
-<p>
-	Lastname : <%= @user.lastname %>
-</p>
+<div class="row">
+	<div class="col-md-10">
+		<div class="col-xs-2 col-xs-offset-1">
+			<p>Lastname : </p>
+		</div>
+		<div class="col-xs-7">
+			<p><%= @user.lastname %></p>
+		</div>
+	</div>
+</div>
 
-<p>
-	DateOfBirth : <%= @user.dateofbirth %>
-</p>
+<div class="row">
+	<div class="col-md-10">
+		<div class="col-xs-2 col-xs-offset-1">
+			<p>Lastname : </p>
+		</div>
+		<div class="col-xs-7">
+			<p><%= @user.lastname %></p>
+		</div>
+	</div>
+</div>
 
-<p>
-	Address : <%= @user.address %>
-</p>
+<div class="row">
+	<div class="col-md-10">
+		<div class="col-xs-2 col-xs-offset-1">
+			<p>Email : </p>
+		</div>
+		<div class="col-xs-7">
+			<p><%= @user.email %></p>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10">
+		<div class="col-xs-2 col-xs-offset-1">
+			<p>Date of birth : </p>
+		</div>
+		<div class="col-xs-7">
+			<p><%= @user.dateofbirth %></p>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10">
+		<div class="col-xs-2 col-xs-offset-1">
+			<p>Address : </p>
+		</div>
+		<div class="col-xs-7">
+			<p><%= @user.address %></p>
+		</div>
+	</div>
+</div>

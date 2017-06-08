@@ -6,6 +6,24 @@ $navbar-default-bg: black;
 	color: #fff;
 }
 
+.listing {
+	list-style: none;
+}
+
+.listname {
+	font-size: 1.7em;
+	font-weight: bold;
+}
+
+.create-btn {
+	margin-bottom: 20px;
+}
+
+.user-img {
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 

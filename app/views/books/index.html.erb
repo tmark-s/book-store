@@ -1,0 +1,22 @@
+<h1>List of book</h1>
+
+<table>
+	<tr>
+		<th>Title</th>
+		<th>Author</th>
+		<th>Price</th>
+		<th>Description</th>
+		<th>Catagory</th>
+	</tr>
+
+	<% @books.each do |book| %>
+		<tr>
+			<td><%= book.title %></td>
+			<td><%= book.author %></td>
+			<td><%= book.price %></td>
+			<td><%= book.description %></td>
+			<td><%= book.category.categoryname if book.category %></td>
+			<td><%= link_to 'Delete', book_path(book), method: :delete %></td>
+		</tr>
+	<% end %>
+</table>

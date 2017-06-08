@@ -1,0 +1,24 @@
+<h1>List of user</h1>
+
+<%= link_to 'Create new user', new_user_path %>
+
+<table>
+	<tr>
+		<th>Firstname</th>
+		<th>Lastname</th>
+		<th>DateOfBirth</th>
+		<th>Address</th>
+	</tr>
+	<% @users.each do |user| %>
+		<tr>
+			<td><%= user.firstname %></td>
+			<td><%= user.lastname %></td>
+			<td><%= user.dateofbirth %></td>
+			<td><%= user.address %></td>
+			<td><%= link_to 'Edit', edit_user_path(user) %></td>
+			<td><%= link_to 'Show', user_path(user) %></td>
+			<td><%= link_to 'delete', user_path(user), method: :delete %></td>
+		</tr>
+	<% end %>
+</table>
+

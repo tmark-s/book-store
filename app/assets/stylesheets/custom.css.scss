@@ -1,0 +1,11 @@
+$navbar-default-bg: black;
+
+#logo {
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #fff;
+}
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+

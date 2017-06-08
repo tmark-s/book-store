@@ -16,7 +16,8 @@
 			<td><%= book.price %></td>
 			<td><%= book.description %></td>
 			<td><%= book.category.categoryname if book.category %></td>
-			<td><%= link_to 'Delete', book_path(book), method: :delete %></td>
+			<td><%= link_to 'Edit', edit_book_path(book) %></td>
+			<td><%= link_to 'Delete', book_path(book), method: :delete, data: {confirm: "Are you sure to delete this book?"} %></td>
 		</tr>
 	<% end %>
 </table>

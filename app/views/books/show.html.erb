@@ -1,21 +1,60 @@
-<h1>Show book</h1>
+<h1 align="center"><%= @book.title %></h1>
 
-<p>
-	<%= image_tag @book.image.thumb.url %>
-</p>
+<div align="center" class="user-img">
+  <%= image_tag(@book.image.thumb.url, size: "500x500") %>
+</div>
 
-<p>
-	Titile : <%= @book.title %>
-</p>
+<div class="row">
+  <div class="col-md-10">
+    <div class="col-xs-2 col-xs-offset-1">
+      <p>Title : </p>
+    </div>
+    <div class="col-xs-7">
+      <p><%= @book.title %></p>
+    </div>
+  </div>
+</div>
 
-<p>
-	Author : <%= @book.author %>
-</p>
+<div class="row">
+  <div class="col-md-10">
+    <div class="col-xs-2 col-xs-offset-1">
+      <p>Author : </p>
+    </div>
+    <div class="col-xs-7">
+      <p><%= @book.author %></p>
+    </div>
+  </div>
+</div>
 
-<p>
-	price : <%= @book.price %>
-</p>
+<div class="row">
+  <div class="col-md-10">
+    <div class="col-xs-2 col-xs-offset-1">
+      <p>Category : </p>
+    </div>
+    <div class="col-xs-7">
+      <p><%= @book.category %></p>
+    </div>
+  </div>
+</div>
 
-<p>
-	description : <%= @book.description %>
-</p>
+<div class="row">
+  <div class="col-md-10">
+    <div class="col-xs-2 col-xs-offset-1">
+      <p>Price : </p>
+    </div>
+    <div class="col-xs-7">
+      <p><%= @book.price %></p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-10">
+    <div class="col-xs-2 col-xs-offset-1">
+      <p>Description : </p>
+    </div>
+    <div class="col-xs-7">
+      <p><%= @book.description %></p>
+    </div>
+  </div>
+</div>

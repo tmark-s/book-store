@@ -1,17 +1,21 @@
 <h1 align="center">All categories</h1>
 
+<div class="create-btn" align="center">
+  <%= link_to 'Create new category', new_category_path, class: "btn btn-lg btn-success" %>
+</div>
+
 <% @categories.each do |category| %>
-	<div class="row">
-		<ul class="listing">
-			<div class="well col-md-12">
-				<div>
-					<li class="listname"><%= link_to "#{category.categoryname}", category_path(category) %></li>
-					<div>
-						<%= link_to "Edit this category", edit_category_path(category), class: "btn btn-xs btn-primary" %>
-						<%= link_to "Delete this category", category_path(category), method: :delete, data: {confirm: "Are you sure to delete this category?"}, class: "btn btn-xs btn-danger" %>
-					</div>
-				</div>
-			</div>
-		</ul>
-	</div>
+  <div class="row">
+    <ul class="listing">
+      <div class="well col-md-12">
+        <div>
+          <li class="listname"><%= link_to "#{category.categoryname}", category_path(category) %></li>
+          <div>
+            <%= link_to "Edit this category", edit_category_path(category), class: "btn btn-xs btn-primary" %>
+            <%= link_to "Delete this category", category_path(category), method: :delete, data: {confirm: "Are you sure to delete this category?"}, class: "btn btn-xs btn-danger" %>
+          </div>
+        </div>
+      </div>
+    </ul>
+  </div>
 <% end %>

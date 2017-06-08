@@ -1,6 +1,10 @@
 <h1>show</h1>
 
 <p>
+	<%= image_tag @user.image.thumb.url %>
+</p>
+
+<p>
 	Firstname : <%= @user.firstname %>
 </p>
 
@@ -13,5 +17,5 @@
 </p>
 
 <p>
-	Addres : <%= @user.address %>
+	Address : <%= @user.address %>
 </p>

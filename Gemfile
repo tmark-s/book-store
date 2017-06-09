@@ -19,6 +19,9 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
 
+#for password
+gem 'bcrypt', '~> 3.1.7'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

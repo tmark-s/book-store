@@ -13,7 +13,10 @@ root 'bookstore#home'
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-resources :users, :categories, :books
+get 'signup', to: 'users#new'
+resources :users, except: [:new]
+resources :categories, :books
+
   # Example resource route with options:
   #   resources :products do
   #     member do

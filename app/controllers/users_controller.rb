@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 	end
 	
 	def create
-		@user = User.new(article_params)
+		@user = User.new(user_params)
 		if @user.save
 			flash[:success] = "User was created"
 			redirect_to users_path
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
 	def update
 		@user = User.find(params[:id])
-		if @user.update(article_params)
+		if @user.update(user_params)
 			flash[:success] = "User was updated"
 			redirect_to users_path
 		else
@@ -43,8 +43,8 @@ class UsersController < ApplicationController
 	end
 
 	private 
-	def article_params
-		params.require(:user).permit(:firstname, :lastname, :dateofbirth, :address, :image, :email)
+	def user_params
+		params.require(:user).permit(:firstname, :lastname, :dateofbirth, :address, :image, :email, :password)
 	end
 
 end

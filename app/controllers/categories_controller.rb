@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.new(article_params)
+    @category = Category.new(category_params)
     if @category.save
       flash[:success] = "Category was created"
       redirect_to categories_path
@@ -23,7 +23,7 @@ class CategoriesController < ApplicationController
 
   def update
     @category = Category.find(params[:id])
-    if @category.update(article_params)
+    if @category.update(category_params)
       flash[:success] = "Category was updated"
       redirect_to categories_path
     else
@@ -43,7 +43,7 @@ class CategoriesController < ApplicationController
   end
 
   private
-  def article_params
+  def category_params
     params.require(:category).permit(:categoryname)
   end
 end 

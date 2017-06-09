@@ -13,6 +13,11 @@
 				</div>
 				<div class="col-xs-8">
 					<li class="listname"><%= link_to "#{book.title}", book_path(book) %></li>
+					
+					<div class="btn-category">
+						<%= link_to "#{book.category.categoryname}", category_path(book.category), class: "btn btn-xs btn-info" %>
+					</div>
+					
 					<div>
 						<%= link_to "Edit this book", edit_book_path(book), class: "btn btn-xs btn-primary" %>
 						<%= link_to "Delete this book", book_path(book), method: :delete, data: {confirm: "Are you sure to delete this book?"}, class: "btn btn-xs btn-danger" %>

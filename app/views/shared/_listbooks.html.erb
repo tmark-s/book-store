@@ -22,18 +22,18 @@
             <div class="btn-bottom-right">
               <%= link_to "Add to wishlist", wishlist_path(book), class: "btn btn-xs btn-warning" %>
               <% if Shoppingcart.where(user: current_user, book: book).take == nil %>
-                <%= link_to "<button class='btn btn-xs btn-success'><span class='glyphicon glyphicon-shopping-cart'></span> Add to cart</button>".html_safe, shoppingcart_path(book) %>
+                <%= link_to "Add to cart", shoppingcart_path(book), class: "btn btn-xs btn-success" %>
               <% else %>
-                <%= link_to "<button class='btn btn-xs btn-success disabled'><span class='glyphicon glyphicon-shopping-cart'></span> Add to cart</button>".html_safe, shoppingcart_path(book) %>
+                <%= link_to "Add to cart", shoppingcart_path(book), class: "btn btn-xs btn-success disabled" %>
               <% end %>
             </div>
           <% else %>
             <div class="btn-bottom-right">
               <%= link_to "Add to wishlist", wishlist_path(book), class: "btn btn-xs btn-warning disabled" %>
               <% if Shoppingcart.where(user: current_user, book: book).take == nil %>
-                <%= link_to "<button class='btn btn-xs btn-success'><span class='glyphicon glyphicon-shopping-cart'></span> Add to cart</button>".html_safe, shoppingcart_path(book) %>
+                <%= link_to "Add to cart", shoppingcart_path(book), class: "btn btn-xs btn-success" %>
               <% else %>
-                <%= link_to "<button class='btn btn-xs btn-success disabled'><span class='glyphicon glyphicon-shopping-cart'></span> Add to cart</button>".html_safe, shoppingcart_path(book) %>
+                <%= link_to "Add to cart", shoppingcart_path(book), class: "btn btn-xs btn-success disabled" %>
               <% end %>
             </div>
           <% end %> 

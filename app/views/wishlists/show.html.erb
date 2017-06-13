@@ -23,9 +23,9 @@
           <div class="btn-bottom-right">
             <%= link_to "Remove from wishlist", wishlist_path(wishlist), method: :delete, class: "btn btn-xs btn-danger" %>
             <% if Shoppingcart.where(user: current_user, book: wishlist.book).take == nil %>
-                <%= link_to "<button class='btn btn-xs btn-success'><span class='glyphicon glyphicon-shopping-cart'></span> Add to cart</button>".html_safe, shoppingcart_path(wishlist.book) %>
+                <%= link_to "Add to cart", shoppingcart_path(wishlist.book), class: "btn btn-xs btn-success" %>
               <% else %>
-                <%= link_to "<button class='btn btn-xs btn-success disabled'><span class='glyphicon glyphicon-shopping-cart'></span> Add to cart</button>".html_safe, shoppingcart_path(wishlist.book) %>
+                <%= link_to "Add to cart", shoppingcart_path(wishlist.book), class: "btn btn-xs btn-success disabled" %>
               <% end %>
           </div> 
         <% end %>

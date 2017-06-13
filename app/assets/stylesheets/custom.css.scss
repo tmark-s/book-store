@@ -28,11 +28,21 @@ $navbar-default-bg: black;
   margin-bottom: 10px;
 }
 
-footer {
+.footer {
 	margin-top: 45px;
 	padding-top: 5px;
 	border-top: 1px solid #eaeaea;
 	color: #777;
+}
+
+.btn-bottom-right {
+	position: absolute;
+	right: 20px;
+	bottom: 20px;
+}
+
+.glyphicon-size {
+	font-size: 1.5em;
 }
 
 @import "bootstrap-sprockets";

@@ -13,4 +13,11 @@ class User < ActiveRecord::Base
   validates :image, presence: true
 
   has_secure_password
+
+  has_many :wishlists
+  has_many :books, through: :wishlists
+
+  has_many :shoppingcarts
+  has_many :books, through: :shoppingcarts
+
 end

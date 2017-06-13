@@ -22,6 +22,16 @@ get 'login', to: 'sessions#new'
 post 'login', to: 'sessions#create'
 delete 'logout', to: 'sessions#destroy'
 
+#Wishlist
+get 'wishlist/:id', to: 'wishlists#create', as: 'wishlist'
+get 'wishlists', to: 'wishlists#show'
+delete 'wishlist/:id', to: 'wishlists#destroy'
+
+#Shoppingcart
+get 'shoppingcart/:id', to: 'shoppingcarts#create', as: 'shoppingcart'
+get 'shoppingcarts', to: 'shoppingcarts#show'
+delete 'shoppingcart/:id', to: 'shoppingcarts#destroy'
+
   # Example resource route with options:
   #   resources :products do
   #     member do

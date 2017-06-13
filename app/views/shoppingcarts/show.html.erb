@@ -1,0 +1,30 @@
+<h1 align="center">Your shopping-cart</h1>
+
+<% @user.shoppingcarts.each do |shoppingcart| %>
+  <div class="row">
+    <ul class="listing">
+      <div class="well col-md-12">
+        <div class="col-xs-2 col-xs-offfset-2">
+          <li><%= image_tag(shoppingcart.book.image.thumb.url, size: "150x150") %></li>
+        </div>
+        <div class="col-xs-10">
+          <li class="listname"><%= link_to "#{shoppingcart.book.title}", book_path(shoppingcart.book) %></li>
+          
+          <div class="btn-category">
+            <%= link_to "#{shoppingcart.book.category.categoryname}", category_path(shoppingcart.book.category), class: "btn btn-xs btn-info" %>
+          </div>
+          
+          <div>
+            <%= link_to "Edit this book", edit_book_path(shoppingcart.book), class: "btn btn-xs btn-primary" %>
+            <%= link_to "Delete this book", book_path(shoppingcart.book), method: :delete, data: {confirm: "Are you sure to delete this book?"}, class: "btn btn-xs btn-danger" %>
+          </div>
+        </div>
+        <% if logged_in? %>
+          <div class="btn-bottom-right">
+            <%= link_to "Remove from shopping-cart", shoppingcart_path(shoppingcart), method: :delete, class: "btn btn-xs btn-danger" %>
+          </div> 
+        <% end %>
+      </div>
+    </ul>
+  </div>
+<% end %>

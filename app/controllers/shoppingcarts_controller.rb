@@ -14,8 +14,9 @@ class ShoppingcartsController < ApplicationController
   end
 
   def destroy
-    @shoppingcart = Shoppingcart.find(params[:id])
-    @shoppingcart.destroy
-    redirect_to(:back)
+    current_user.shoppingcarts.each do |shoppingcart|
+      shoppingcart.destroy
+    end
+    redirect_to shoppingcarts_path
   end
 end

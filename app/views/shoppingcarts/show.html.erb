@@ -28,3 +28,17 @@
     </ul>
   </div>
 <% end %>
+
+<% if current_user.shoppingcarts.count != 0 %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="btn-buy">
+        <%= link_to "Check out", shoppingcart_path(current_user),method: :delete, class: "btn btn-lg btn-success" %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+
+

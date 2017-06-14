@@ -59,6 +59,15 @@ $navbar-default-bg: black;
 	text-align: center;
 }
 
+.book-head {
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+.book-des {
+	font-size: 1.5em;
+}
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 

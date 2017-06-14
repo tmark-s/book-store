@@ -7,7 +7,7 @@ class WishlistsController < ApplicationController
       @wishlist.save
       redirect_to books_path
     else
-      flash[:danger] = "You cannot add to wishlist more than 10"
+      flash[:danger] = "You cannot add to wishlist more than 10 books"
       redirect_to books_path
     end
   end
@@ -18,8 +18,13 @@ class WishlistsController < ApplicationController
 
   def destroy
     @wishlist = Wishlist.find(params[:id])
-    @wishlist.destroy
-    redirect_to wishlists_path
+    if @wishlist.user == current_user
+      @wishlist.destroy
+      redirect_to wishlists_path
+    else
+      flash[:danger] = "You can only remove from your wishlist"
+      redirect_to wishlists_path
+    end
   end
 
 end

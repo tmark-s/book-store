@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+	before_action :set_user, only: [:edit, :update, :show, :destroy]
+	before_action :require_same_user, only: [:edit, :update, :show, :destroy]
+
 	def index
 		@users = User.all
 	end
@@ -10,7 +13,7 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		if @user.save
-			flash[:success] = "User was created"
+			flash[:success] = "Your account was created"
 			redirect_to users_path
 		else
 			render 'new'
@@ -18,13 +21,12 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		@user = User.find(params[:id])
+
 	end
 
 	def update
-		@user = User.find(params[:id])
 		if @user.update(user_params)
-			flash[:success] = "User was updated"
+			flash[:success] = "Your profile was updated"
 			redirect_to users_path
 		else
 			render 'edit'
@@ -32,11 +34,10 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@user = User.find(params[:id])
+
 	end
 
 	def destroy
-		@user = User.find(params[:id])
 		@user.destroy
 		flash[:danger] = "User was deleted"
 		redirect_to users_path
@@ -45,6 +46,17 @@ class UsersController < ApplicationController
 	private 
 	def user_params
 		params.require(:user).permit(:firstname, :lastname, :dateofbirth, :address, :image, :email, :password)
+	end
+
+	def set_user
+		@user = User.find(params[:id])
+	end
+
+	def require_same_user
+		if current_user != @user
+			flash[:danger] = "You can only edit your account"
+			redirect_to root_path
+		end
 	end
 
 end

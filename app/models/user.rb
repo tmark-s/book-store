@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   validates :dateofbirth, presence: true
 
-  validates :image, presence: true
+  #validates :image, presence: true
 
   has_secure_password
 

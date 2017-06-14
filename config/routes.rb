@@ -31,6 +31,7 @@ delete 'wishlist/:id', to: 'wishlists#destroy'
 get 'shoppingcart/:id', to: 'shoppingcarts#create', as: 'shoppingcart'
 get 'shoppingcarts', to: 'shoppingcarts#show'
 delete 'shoppingcart/:id', to: 'shoppingcarts#destroy'
+delete 'checkout', to: 'shoppingcarts#checkout'
 
   # Example resource route with options:
   #   resources :products do

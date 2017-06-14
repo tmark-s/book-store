@@ -5,15 +5,15 @@ class WishlistsController < ApplicationController
     @wishlist.book = @book
     if current_user.wishlists.count < 10
       @wishlist.save
-      redirect_to(:back)
+      redirect_to books_path
     else
       flash[:danger] = "You cannot add to wishlist more than 10"
-      redirect_to(:back)
+      redirect_to books_path
     end
   end
 
   def show
-    @user = current_user
+    
   end
 
   def destroy

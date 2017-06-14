@@ -51,6 +51,14 @@ $navbar-default-bg: black;
 	top: 20px;
 }
 
+.list-empty {
+	font-size: 1.7em;
+	font-weight: bold;
+	color: red;
+	margin-top: 60px;
+	text-align: center;
+}
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 

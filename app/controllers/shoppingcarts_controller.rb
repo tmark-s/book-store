@@ -5,15 +5,21 @@ class ShoppingcartsController < ApplicationController
     @shoppingcart.book = @book
     if @shoppingcart.save
       flash[:success] = "You add '#{@book.title}' to the shopping-cart"
-      redirect_to(:back)
+      redirect_to books_path
     end
   end
 
   def show
-    @user = current_user
+
   end
 
   def destroy
+    @shoppingcart = Shoppingcart.find(params[:id])
+    @shoppingcart.destroy
+    redirect_to shoppingcarts_path
+  end
+
+  def checkout
     current_user.shoppingcarts.each do |shoppingcart|
       shoppingcart.destroy
     end

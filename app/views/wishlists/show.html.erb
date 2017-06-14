@@ -1,6 +1,14 @@
 <h1 align="center">Your wishlist</h1>
 
-<% @user.wishlists.each do |wishlist| %>
+<% if current_user.wishlists.count == 0 %>
+  <div class="row">
+    <div class="col-md-12">
+      <p class="list-empty">Your wishlist is empty</p>
+    </div>
+  </div>
+<% end %>
+
+<% current_user.wishlists.each do |wishlist| %>
   <div class="row">
     <ul class="listing">
       <div class="well col-md-12">

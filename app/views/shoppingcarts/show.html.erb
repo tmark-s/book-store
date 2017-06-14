@@ -1,6 +1,17 @@
 <h1 align="center">Your shopping-cart</h1>
 
-<% @user.shoppingcarts.each do |shoppingcart| %>
+<% if current_user.shoppingcarts.count == 0 %>
+  <div class="row">
+    <div class="col-md-12">
+      <p class="list-empty">Your shopping-cart is empty</p>
+    </div>
+  </div>
+<% end %>
+
+<% total = 0 %>
+
+<% current_user.shoppingcarts.each do |shoppingcart| %>
+  <% total += shoppingcart.book.price %>
   <div class="row">
     <ul class="listing">
       <div class="well col-md-12">
@@ -31,9 +42,27 @@
 
 <% if current_user.shoppingcarts.count != 0 %>
   <div class="row">
+    <div class="col-md-offset-8 col-md-3" align="right">
+      <li class="listname listing">Number of book : </li>
+    </div>
+    <div class="col-md-1" align="center">
+      <li class="listname listing"><%= current_user.shoppingcarts.count %></li>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-offset-8 col-md-3" align="right">
+      <li class="listname listing">Total prices : </li>
+    </div>
+    <div class="col-md-1" align="center">
+      <li class="listname listing"><%= total %></li>
+    </div>
+  </div>
+
+  <div class="row">
     <div class="col-md-12">
       <div class="btn-buy">
-        <%= link_to "Check out", shoppingcart_path(current_user),method: :delete, class: "btn btn-lg btn-success" %>
+        <%= link_to "Check out", checkout_path,method: :delete, class: "btn btn-lg btn-success" %>
       </div>
     </div>
   </div>

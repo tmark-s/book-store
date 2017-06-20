@@ -4,7 +4,12 @@ class CategoriesController < ApplicationController
   end
 
   def new
-    @category = Category.new
+    if !logged_in? || !current_user.admin?
+      flash[:danger] = "You cannot create new category"
+      redirect_to categories_path
+    else
+      @category = Category.new
+    end
   end
 
   def create
@@ -18,7 +23,12 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    @category = Category.find(params[:id])
+    if !logged_in? || !current_user.admin?
+      flash[:danger] = "You cannot edit this category"
+      redirect_to categories_path
+    else
+      @category = Category.find(params[:id])
+    end
   end
 
   def update

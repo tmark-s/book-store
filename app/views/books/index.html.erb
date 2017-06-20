@@ -1,7 +1,9 @@
 <h1 align="center">All books</h1>
 
-<div class="create-btn" align="center">
-	<%= link_to 'Create new book', new_book_path, class: "btn btn-lg btn-success" %>
-</div>
+<% if logged_in? && current_user.admin? %>
+  <div class="create-btn" align="center">
+    <%= link_to 'Create new book', new_book_path, class: "btn btn-lg btn-success" %>
+  </div>
+<% end %>
 
 <%= render 'shared/listbooks', obj: @books %>

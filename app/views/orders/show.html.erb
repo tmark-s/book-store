@@ -8,8 +8,11 @@
   </div>
 <% end %>
 
-<% current_user.orders.each do |order| %>
-  <div class="row">
+<% buydate = current_user.orders.group_by {|date| date.created_on} %>
+<% buydate.each do |date| %>
+  <h3><%= date[0] %></h3>
+  <% date[1].each do |order| %>
+    <div class="row">
     <ul class="listing">
       <div class="well col-md-12">
         <div class="col-xs-2 col-xs-offfset-2">
@@ -24,5 +27,6 @@
       </div>
     </ul>
   </div>
+  <% end %>
 <% end %>
 

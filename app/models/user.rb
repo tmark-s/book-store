@@ -20,4 +20,12 @@ class User < ActiveRecord::Base
   has_many :shoppingcarts
   has_many :books, through: :shoppingcarts
 
+  has_many :checkouts
+  has_many :books, through: :checkouts
+
+  has_many :orders
+  has_many :books, through: :orders
+
+  has_many :shippingaddresses
+
 end

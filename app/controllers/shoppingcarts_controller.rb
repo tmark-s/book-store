@@ -18,11 +18,4 @@ class ShoppingcartsController < ApplicationController
     @shoppingcart.destroy
     redirect_to shoppingcarts_path
   end
-
-  def checkout
-    current_user.shoppingcarts.each do |shoppingcart|
-      shoppingcart.destroy
-    end
-    redirect_to shoppingcarts_path
-  end
 end

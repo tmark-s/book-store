@@ -14,4 +14,10 @@ class Book < ActiveRecord::Base
 
   has_many :shoppingcarts
   has_many :users, through: :shoppingcarts
+
+  has_many :checkouts
+  has_many :users, through: :checkouts
+
+  has_many :orders
+  has_many :users, through: :orders
 end

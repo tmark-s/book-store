@@ -1,14 +1,41 @@
 <h1 align="center"><%= @book.title %>'s tags</h1>
 
-<table>
-  <tr>
-    <th>tag name</th>
-  </tr>
+<div align="center" class="user-img">
+  <%= image_tag(@book.image.thumb.url, size: "500x500") %>
+</div>
 
+<div align="center">
   <% @book.taggings.each do |tagging| %>
-    <tr>
-      <td><%= tagging.tag.name %></td>
-      <td><%= link_to "delete", tag_delete_path(tagging), method: :delete %></td>
-    </tr>
+    <div class="row">
+      <div class="well col-md-12">
+        <div class="col-md-2" align="left">
+          <p><%= tagging.tag.name %></p>
+        </div>
+        <div class="col-md-offset-9 col-md-1">
+          <%= link_to "Delete tag", tag_delete_path(tagging), method: :delete, class: "btn btn-xs btn-danger" %>
+        </div>
+      </div>
+    </div>
   <% end %>
-</table>
+</div>
+
+<div class="row" style="margin-top: 100px">
+  <div class="col-xs-12">
+    <%= form_for(@tag, url: tag_addtag_path(@book), :html => {class: "form-horizontal", role: "form"}) do |f| %>
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <%= f.label :tag%>
+        </div>
+        <div class="col-sm-8">
+          <%= f.text_field :name, class: "form-control", placeholder: "tag", autofocus: true %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <%= f.submit("Add tag", class: "btn btn-primary btn-lg") %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

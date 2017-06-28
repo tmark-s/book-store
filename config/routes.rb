@@ -47,6 +47,7 @@ get 'history', to: 'orders#show'
 
 #tag
 get 'tag/edit/:id', to: 'tags#show', as: 'tag/edit'
+post 'tag/addtag/:id', to: 'tags#addtag', as: 'tag/addtag'
 delete 'tag/delete/:id', to: 'tags#delete', as: 'tag/delete'
 
 

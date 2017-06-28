@@ -1,0 +1,14 @@
+<h1 align="center"><%= @book.title %>'s tags</h1>
+
+<table>
+  <tr>
+    <th>tag name</th>
+  </tr>
+
+  <% @book.taggings.each do |tagging| %>
+    <tr>
+      <td><%= tagging.tag.name %></td>
+      <td><%= link_to "delete", tag_delete_path(tagging), method: :delete %></td>
+    </tr>
+  <% end %>
+</table>

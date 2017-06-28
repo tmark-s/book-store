@@ -45,6 +45,10 @@ get "checkout/buy", to: 'orders#buy'
 #Buy history
 get 'history', to: 'orders#show'
 
+#tag
+get 'tag/edit/:id', to: 'tags#show', as: 'tag/edit'
+delete 'tag/delete/:id', to: 'tags#delete', as: 'tag/delete'
+
 
   # Example resource route with options:
   #   resources :products do

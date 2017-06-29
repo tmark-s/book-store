@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
     current_user.shoppingcarts.each do |shoppingcart|
       shoppingcart.destroy
     end
+    Order.freq_buy current_user
     redirect_to shoppingcarts_path
     flash[:success] = "Success!"
   end

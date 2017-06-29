@@ -15,6 +15,7 @@ class OrdersController < ApplicationController
       shoppingcart.destroy
     end
     Order.freq_buy current_user
+    Order.buy_count
     redirect_to shoppingcarts_path
     flash[:success] = "Success!"
   end

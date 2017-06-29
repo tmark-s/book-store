@@ -21,4 +21,11 @@ class Order < ActiveRecord::Base
     user.freq_tag = freq
     user.save
   end
+
+  def self.buy_count
+    Order.all.each do |order|
+      order.book.buy_amount += 1
+      order.book.save
+    end
+  end
 end

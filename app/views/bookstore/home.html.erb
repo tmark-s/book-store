@@ -1,30 +1,28 @@
 <h1>This is home page</h1>
 
-<% if logged_in? %>
-  <% if current_user.orders.count > 0 %>
-    <h1>Recommend books</h1>
+<% if logged_in?  && current_user.orders.count > 0%>
+  <h1>Recommend books</h1>
 
-    <div class="well col-md-12">
-      <% numbook = 0 %>
-      <% Book.tagged_with((current_user.freq_tag).key((current_user.freq_tag).values.max)).each do |book| %>
-        <% if numbook != 4 %>
-          <% if Shoppingcart.where(user: current_user, book: book).count != 0 %>
-            <% next %>
-          <% else %>
-            <div class="col-md-3" align="center">
-              <div style="margin-bottom: 20px">
-                <%= image_tag(book.image.thumb.url, size: "250x350") %>
-              </div>
-              <div>
-                <%= link_to "Buy", shoppingcart_path(book), class: "btn btn-lg btn-success" %>
-              </div>
-            </div>
-            <% numbook += 1 %>
-          <% end %>
+  <div class="well col-md-12">
+    <% numbook = 0 %>
+    <% Book.tagged_with((current_user.freq_tag).key((current_user.freq_tag).values.max)).each do |book| %>
+      <% if numbook != 4 %>
+        <% if Shoppingcart.where(user: current_user, book: book).count != 0 %>
+          <% next %>
         <% else %>
-          <% break %>
+          <div class="col-md-3" align="center">
+            <div style="margin-bottom: 20px">
+              <%= image_tag(book.image.thumb.url, size: "250x350") %>
+            </div>
+            <div>
+              <%= link_to "Buy", shoppingcart_path(book), class: "btn btn-lg btn-success" %>
+            </div>
+          </div>
+          <% numbook += 1 %>
         <% end %>
+      <% else %>
+        <% break %>
       <% end %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 <% end %>

@@ -35,7 +35,7 @@
     <% numbook = 0 %>
     <% Book.tagged_with((current_user.freq_tag).key((current_user.freq_tag).values.max)).each do |book| %>
       <% if numbook != 4 %>
-        <% if Shoppingcart.where(user: current_user, book: book).count != 0 %>
+        <% if Shoppingcart.where(user: current_user, book: book).count != 0 || Order.where(user: current_user, book: book).count != 0 %>
           <% next %>
         <% else %>
           <div class="col-md-3" align="center">

@@ -30,7 +30,7 @@
 </div>
 
 
-<% if logged_in?  && current_user.orders.count > 0%>
+<% if logged_in?  && current_user.orders.count > 0 %>
   <h3>Recommend books</h3>
 
   <div class="col-md-12">
@@ -54,5 +54,11 @@
         <% break %>
       <% end %>
     <% end %>
+  </div>
+<% end %>
+
+<% if !logged_in? %>
+  <div align="center">
+    <%= link_to "Sign up now!" , signup_path,class: "btn btn-lg btn-success" %>
   </div>
 <% end %>

@@ -8,7 +8,7 @@
     <% if num != 4 %>
       <div class="col-md-3" align="center">
         <div style="margin-bottom: 20px">
-          <%= image_tag(book.image.thumb.url, size: "250x350") %>
+          <%= link_to image_tag(book.image.thumb.url, size: "250x350"), book_path(book) %>
         </div>
         <% if logged_in? %>
           <% if Shoppingcart.where(user: current_user, book: book).count == 0 %>
@@ -42,7 +42,7 @@
         <% else %>
           <div class="col-md-3" align="center">
             <div style="margin-bottom: 20px">
-              <%= image_tag(book.image.thumb.url, size: "250x350") %>
+              <%= link_to image_tag(book.image.thumb.url, size: "250x350"), book_path(book) %>
             </div>
             <div>
               <%= link_to "Buy", shoppingcart_path(book), class: "btn btn-lg btn-success" %>

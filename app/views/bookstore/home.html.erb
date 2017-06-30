@@ -10,14 +10,16 @@
         <div style="margin-bottom: 20px">
           <%= image_tag(book.image.thumb.url, size: "250x350") %>
         </div>
-        <% if Shoppingcart.where(user: current_user, book: book).count == 0 %>
-          <div>
-            <%= link_to "Buy", shoppingcart_path(book), class: "btn btn-lg btn-success" %>
-          </div>
-        <% else %>
-          <div>
-            <%= link_to "Buy", shoppingcart_path(book), class: "btn btn-lg btn-success disabled" %>
-          </div>
+        <% if logged_in? %>
+          <% if Shoppingcart.where(user: current_user, book: book).count == 0 %>
+            <div>
+              <%= link_to "Buy", shoppingcart_path(book), class: "btn btn-lg btn-success" %>
+            </div>
+          <% else %>
+            <div>
+              <%= link_to "Buy", shoppingcart_path(book), class: "btn btn-lg btn-success disabled" %>
+            </div>
+          <% end %>
         <% end %>
       </div>
       <% num += 1 %>

@@ -10,7 +10,7 @@
 
 <% total = 0 %>
 
-<% current_user.shoppingcarts.each do |shoppingcart| %>
+<% current_user.shoppingcarts.joins(:book).merge(Book.order(:title)).each do |shoppingcart| %>
   <% total += shoppingcart.book.price %>
   <div class="row">
     <ul class="listing">

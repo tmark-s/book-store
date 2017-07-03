@@ -8,7 +8,7 @@
   </div>
 <% end %>
 
-<% current_user.wishlists.each do |wishlist| %>
+<% current_user.wishlists.joins(:book).merge(Book.order(:title)).each do |wishlist| %>
   <div class="row">
     <ul class="listing">
       <div class="well col-md-12">

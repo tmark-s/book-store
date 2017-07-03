@@ -46,10 +46,15 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book = Book.find(params[:id])
-    @book.destroy
-    flash[:danger] = "Book was deleted"
-    redirect_to books_path
+    if !logged_in? || !current_user.admin?
+      flash[:danger] = "You cannot delete this book"
+      redirect_to books_path
+    else
+      @book = Book.find(params[:id])
+      @book.destroy
+      flash[:danger] = "Book was deleted"
+      redirect_to books_path
+    end
   end
 
   private

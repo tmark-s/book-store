@@ -17,11 +17,11 @@
         </div>
         <div class="col-xs-10">
           <li class="listname"><%= link_to "#{wishlist.book.title}", book_path(wishlist.book) %></li>
-          
+
           <div class="btn-category">
             <%= link_to "#{wishlist.book.category.categoryname}", category_path(wishlist.book.category), class: "btn btn-xs btn-info" %>
           </div>
-          
+
           <% if logged_in? && current_user.admin? %>
             <div>
               <%= link_to "Edit this book", edit_book_path(wishlist.book), class: "btn btn-xs btn-primary" %>

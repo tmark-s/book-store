@@ -6,7 +6,7 @@
   </div>
 <% end %>
 
-<% @categories.each do |category| %>
+<% @categories.order(:categoryname).each do |category| %>
   <div class="row">
     <ul class="listing">
       <div class="well col-md-12">

@@ -42,7 +42,7 @@ class Order < ActiveRecord::Base
       pdf.text "address", :size => 8
       pdf.move_down 20
 
-      pdf.text "Sold to", :size => 12, :font_style => :bold
+      pdf.text "Customer", :size => 12, :font_style => :bold
       pdf.text "#{current_user.firstname} #{current_user.lastname}", :size => 8
       pdf.text orders.first.address, :size => 8
       pdf.move_down 20
@@ -50,13 +50,30 @@ class Order < ActiveRecord::Base
       pdf.table [
         ["BOOK", "AMOUNT", "UNIT PRICE", "DISCOUNT", "LINE TOTAL"]
       ], :width => pdf.bounds.width, :column_widths => [220,80,80,80,80], :cell_style => {:align => :center, :size => 8, :font_style => :bold}
+      total = 0
       orders.each do |order|
         pdf.table [
           [order.book.title, "1", order.book.price, "-", order.book.price]
         ], :width => pdf.bounds.width, :column_widths => [220,80,80,80,80], :cell_style => {:size => 8}
+        total += order.book.price
       end
-
+      pdf.table [
+        [nil, nil, "TOTAL DISCOUNT", "-", nil]
+      ], :width => pdf.bounds.width, :column_widths => [220,80,80,80,80], :cell_style => {:size => 8, :font_style => :bold}
+      pdf.table [
+        [nil, nil, nil, "SUBTOTAL", total]
+      ], :width => pdf.bounds.width, :column_widths => [220,80,80,80,80], :cell_style => {:size => 8, :font_style => :bold}
+      vat = total/7
+      vat = ActionController::Base.helpers.number_with_precision(vat, precision: 2).to_f
+      pdf.table [
+        [nil, nil, nil, "SALES TAX", vat]
+      ], :width => pdf.bounds.width, :column_widths => [220,80,80,80,80], :cell_style => {:size => 8, :font_style => :bold}
+      pdf.table [
+        [nil, nil, nil, "TOTAL", total+vat]
+      ], :width => pdf.bounds.width, :column_widths => [220,80,80,80,80], :cell_style => {:size => 8, :font_style => :bold}
       
+
+
     end
   end
 end

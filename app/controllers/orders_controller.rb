@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   def buy
+    Order.print_receipt current_user.checkouts, current_user
     current_user.checkouts.each do |checkout|
       if checkout.address == ""
         checkout.destroy
@@ -22,5 +23,10 @@ class OrdersController < ApplicationController
 
   def show
 
+  end
+
+  def test
+    Order.print_receipt Order.all, User.first
+    redirect_to root_path
   end
 end

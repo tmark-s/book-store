@@ -50,6 +50,8 @@ get 'tag/edit/:id', to: 'tags#show', as: 'tag/edit'
 post 'tag/addtag/:id', to: 'tags#addtag', as: 'tag/addtag'
 delete 'tag/delete/:id', to: 'tags#delete', as: 'tag/delete'
 
+#test
+get 'test', to: 'orders#test'
 
   # Example resource route with options:
   #   resources :products do

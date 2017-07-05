@@ -25,6 +25,16 @@ gem 'bcrypt', '~> 3.1.7'
 #for tag
 gem 'acts-as-taggable-on'
 
+#for redis
+gem 'redis-rails'
+
+#for sidekiq
+gem 'sidekiq'
+
+#for pdf
+gem 'prawn'
+gem 'prawn-table'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

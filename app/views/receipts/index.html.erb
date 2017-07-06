@@ -5,6 +5,14 @@
   <% path = receipt.bill %>
   <% rname = rname.split("_") %>
   <% time = rname[4].split(".") %>
-  <%= "#{rname[3]} #{time[0]}" %>
-  <%= link_to "view", receipt_path(receipt) %>
+  <div class="row">
+    <div class="well col-md-12">
+      <div class="col-md-4" align="left">
+        <p class="listname"><%= "#{rname[3]} #{time[0]}" %></p>
+      </div>
+      <div class="col-md-offset-7 col-md-1">
+        <%= link_to "view", receipt_path(receipt), class: "btn btn-lg btn-primary" %>
+      </div>
+    </div>
+  </div>
 <% end %>

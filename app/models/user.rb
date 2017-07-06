@@ -28,5 +28,7 @@ class User < ActiveRecord::Base
 
   has_many :shippingaddresses
 
+  has_many :receipts
+
   serialize :freq_tag
 end

@@ -24,9 +24,4 @@ class OrdersController < ApplicationController
   def show
 
   end
-
-  def test
-    Order.print_receipt Order.all, User.first
-    redirect_to root_path
-  end
 end

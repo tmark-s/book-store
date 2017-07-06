@@ -1,0 +1,10 @@
+<h1 align="center">All receipts</h1>
+
+<% current_user.receipts.each do |receipt| %>
+  <% rname = receipt.bill %>
+  <% path = receipt.bill %>
+  <% rname = rname.split("_") %>
+  <% time = rname[4].split(".") %>
+  <%= "#{rname[3]} #{time[0]}" %>
+  <%= link_to "view", receipt_path(receipt) %>
+<% end %>

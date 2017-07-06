@@ -33,7 +33,9 @@ class Order < ActiveRecord::Base
     datetime = DateTime.now
     datetime = datetime.strftime("%d-%m-%Y %H:%M")
     datetime = datetime.split(" ")
-    Prawn::Document.generate("#{current_user.firstname}_#{current_user.lastname}_#{datetime[0]}_#{datetime[1]}.pdf") do |pdf|
+    pdfname = "public/uploads/receipt/#{current_user.id}_#{current_user.firstname}_#{current_user.lastname}_#{datetime[0]}_#{datetime[1]}.pdf"
+    
+    Prawn::Document.generate(pdfname) do |pdf|
       pdf.text "SALES RECEIPT", :align => :right, :size => 18
       pdf.move_down 10
       pdf.text "DATE/TIME : #{datetime[0]} #{datetime[1]}", :align => :right, :size => 10
@@ -71,9 +73,8 @@ class Order < ActiveRecord::Base
       pdf.table [
         [nil, nil, nil, "TOTAL", total+vat]
       ], :width => pdf.bounds.width, :column_widths => [220,80,80,80,80], :cell_style => {:size => 8, :font_style => :bold}
-      
-
-
     end
+    receipt = Receipt.new(user: current_user, bill: pdfname)
+    receipt.save
   end
 end

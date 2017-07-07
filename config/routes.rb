@@ -52,9 +52,8 @@ delete 'tag/delete/:id', to: 'tags#delete', as: 'tag/delete'
 
 #bill
 get 'receipts', to: 'receipts#index'
-get 'receipt/:id', to: 'receipts#view', as: 'receipt'
 
-
+#sidekiq
 require 'sidekiq/web'
 mount Sidekiq::Web => '/sidekiq'
   # Example resource route with options:

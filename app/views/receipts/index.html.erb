@@ -11,7 +11,7 @@
         <p class="listname"><%= "#{rname[3]} #{time[0]}" %></p>
       </div>
       <div class="col-md-offset-7 col-md-1">
-        <%= link_to "view", receipt_path(receipt), class: "btn btn-lg btn-primary" %>
+        <%= link_to "view", root_path(receipt.bill), class: "btn btn-lg btn-primary" %>
       </div>
     </div>
   </div>

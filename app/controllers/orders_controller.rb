@@ -1,6 +1,15 @@
 class OrdersController < ApplicationController
   def buy
-    Order.print_receipt current_user.checkouts, current_user
+    orderid = Array.new
+    current_user.checkouts.each do |checkout|
+      if checkout.address == ""
+        checkout.destroy
+      else
+        orderid.push(checkout.id)
+      end
+    end
+    userid =current_user.id
+    HardWorker.perform_async(orderid, userid)
     current_user.checkouts.each do |checkout|
       if checkout.address == ""
         checkout.destroy
@@ -9,7 +18,6 @@ class OrdersController < ApplicationController
         order.book = checkout.book
         order.address = checkout.address
         order.save
-        checkout.destroy
       end
     end
     current_user.shoppingcarts.each do |shoppingcart|

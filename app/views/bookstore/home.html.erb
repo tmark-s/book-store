@@ -53,6 +53,24 @@
         <% break %>
       <% end %>
     <% end %>
+    <% if numbook == 0 %>
+      <% num = 0 %>
+      <% Book.all.each do |book| %>
+        <% if num != 4 %>
+          <div class="col-md-3" align="center">
+            <div style="margin-bottom: 20px">
+              <%= link_to image_tag(book.image.thumb.url, size: "250x350"), book_path(book) %>
+            </div>
+            <div>
+              <%= link_to "Buy", shoppingcart_path(book), class: "btn btn-lg btn-success" %>
+            </div>
+          </div>
+          <% num += 1 %>
+        <% else %>
+          <% break %>
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
 <% end %>
 

@@ -53,6 +53,7 @@ delete 'tag/delete/:id', to: 'tags#delete', as: 'tag/delete'
 #bill
 get 'receipts', to: 'receipts#index'
 
+
 #sidekiq
 require 'sidekiq/web'
 mount Sidekiq::Web => '/sidekiq'

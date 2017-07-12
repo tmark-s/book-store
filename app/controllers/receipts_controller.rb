@@ -3,7 +3,7 @@ class ReceiptsController < ApplicationController
     
   end
 
-  def view
+  def show
     @receipt = Receipt.find(params[:id])
   end
 end

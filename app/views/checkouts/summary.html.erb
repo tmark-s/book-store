@@ -1,5 +1,62 @@
 <h1 align="center">Summary</h1>
 
+<table class="table table-striped">
+  <tr>
+    <th>Book</th>
+    <th>Amount</th>
+    <th>Unit price</th>
+    <th>Discount</th>
+    <th>Line total</th>
+  </tr>
+
+  <% total = 0 %>
+  <% current_user.checkouts.each do |checkout| %>
+    <% total += checkout.book.price %>
+    <tr>
+      <td><%= checkout.book.title %></td>
+      <td><%= 1 %></td>
+      <td><%= checkout.book.price %></td>
+      <td><%= 0 %></td>
+      <td><%= checkout.book.price %></td>
+    </tr>
+  <% end %>
+
+  <tr>
+    <td></td>
+    <td></td>
+    <th>Total discount</th>
+    <td><%= 0 %></td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <th>Subtotal</th>
+    <td><%= total %></td>
+  </tr>
+
+  <% vat = total/7 %>
+  <% vat = ActionController::Base.helpers.number_with_precision(vat, precision: 2).to_f %>
+  <% t = total+vat %>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <th>Sales tax</th>
+    <td><%= vat %></td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <th>Total</th>
+    <td><%= ActionController::Base.helpers.number_with_precision(vat+total, precision: 2).to_f %></td>
+  </tr>
+</table>
+
 <div class="create-btn" align="center">
   <%= link_to "Buy now!", checkout_buy_path, class: "btn btn-lg btn-success" %>
 </div>

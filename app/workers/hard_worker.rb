@@ -50,7 +50,7 @@ class HardWorker
         [nil, nil, nil, "SALES TAX", vat]
       ], :width => pdf.bounds.width, :column_widths => [220,80,80,80,80], :cell_style => {:size => 8, :font_style => :bold}
       pdf.table [
-        [nil, nil, nil, "TOTAL", total+vat]
+        [nil, nil, nil, "TOTAL", ActionController::Base.helpers.number_with_precision(vat+total, precision: 2).to_f]
       ], :width => pdf.bounds.width, :column_widths => [220,80,80,80,80], :cell_style => {:size => 8, :font_style => :bold}
     end
     receipt = Receipt.new(user: current_user, bill: pdfname)

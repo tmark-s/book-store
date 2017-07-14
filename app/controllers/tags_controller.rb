@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
   def show
-    if !logged_in? && !current_user.admin?
+    if !user_signed_in? && !current_user.admin?
       flash[:danger] = "You cannot do this section"
       redirect_to root_path
     else
@@ -10,7 +10,7 @@ class TagsController < ApplicationController
   end
 
   def addtag
-    if logged_in? && current_user.admin?
+    if user_signed_in? && current_user.admin?
       @tag = ActsAsTaggableOn::Tag.new(tag_params)
       @book = Book.find(params[:id])
       @book.tag_list.add(@tag)
@@ -23,7 +23,7 @@ class TagsController < ApplicationController
   end
 
   def delete
-    if logged_in? && current_user.admin?
+    if user_signed_in? && current_user.admin?
       @tagging = ActsAsTaggableOn::Tagging.find(params[:id])
       @tagging.destroy
       flash[:danger] = "Tag was deleted"

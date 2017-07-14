@@ -12,7 +12,7 @@
             <%= link_to "#{book.category.categoryname}", category_path(book.category), class: "btn btn-xs btn-info" %>
           </div>
           
-          <% if logged_in? && current_user.admin? %>
+          <% if user_signed_in? && current_user.admin? %>
             <div class="btn-category">
               <%= link_to "Edit this book", edit_book_path(book), class: "btn btn-xs btn-primary" %>
               <%= link_to "Delete this book", book_path(book), method: :delete, data: {confirm: "Are you sure to delete this book?"}, class: "btn btn-xs btn-danger" %>
@@ -32,7 +32,7 @@
             </div>
           <% end %>
         </div>
-        <% if logged_in? %>
+        <% if user_signed_in? %>
           <% if Wishlist.where(user: current_user, book: book).take == nil %>
             <div class="btn-bottom-right">
               <%= link_to "Add to wishlist", wishlist_path(book), class: "btn btn-xs btn-warning" %>

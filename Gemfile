@@ -15,6 +15,9 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+#for devise
+gem 'devise'
+
 #for upload image
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'

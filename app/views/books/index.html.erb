@@ -1,6 +1,6 @@
 <h1 align="center">All books</h1>
 
-<% if logged_in? && current_user.admin? %>
+<% if user_signed_in? && current_user.admin? %>
   <div class="create-btn" align="center">
     <%= link_to 'Create new book', new_book_path, class: "btn btn-lg btn-success" %>
   </div>

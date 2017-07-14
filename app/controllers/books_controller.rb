@@ -4,7 +4,7 @@ class BooksController < ApplicationController
   end
 
   def new
-    if !logged_in? || !current_user.admin?
+    if !user_signed_in? || !current_user.admin?
       flash[:danger] = "You cannot create new book"
       redirect_to books_path
     else
@@ -23,7 +23,7 @@ class BooksController < ApplicationController
   end
 
   def edit
-    if !logged_in? || !current_user.admin?
+    if !user_signed_in? || !current_user.admin?
       flash[:danger] = "You cannot edit this book"
       redirect_to books_path
     else
@@ -46,7 +46,7 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    if !logged_in? || !current_user.admin?
+    if !user_signed_in? || !current_user.admin?
       flash[:danger] = "You cannot delete this book"
       redirect_to books_path
     else

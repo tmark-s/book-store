@@ -22,14 +22,14 @@
             <%= link_to "#{wishlist.book.category.categoryname}", category_path(wishlist.book.category), class: "btn btn-xs btn-info" %>
           </div>
 
-          <% if logged_in? && current_user.admin? %>
+          <% if user_signed_in? && current_user.admin? %>
             <div>
               <%= link_to "Edit this book", edit_book_path(wishlist.book), class: "btn btn-xs btn-primary" %>
               <%= link_to "Delete this book", book_path(wishlist.book), method: :delete, data: {confirm: "Are you sure to delete this book?"}, class: "btn btn-xs btn-danger" %>
             </div>
           <% end %>
         </div>
-        <% if logged_in? %>
+        <% if user_signed_in? %>
           <div class="btn-bottom-right">
             <%= link_to "Remove from wishlist", wishlist_path(wishlist), method: :delete, class: "btn btn-xs btn-danger" %>
             <% if Shoppingcart.where(user: current_user, book: wishlist.book).take == nil %>

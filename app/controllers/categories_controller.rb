@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   end
 
   def new
-    if !logged_in? || !current_user.admin?
+    if !user_signed_in? || !current_user.admin?
       flash[:danger] = "You cannot create new category"
       redirect_to categories_path
     else
@@ -23,7 +23,7 @@ class CategoriesController < ApplicationController
   end
 
   def edit
-    if !logged_in? || !current_user.admin?
+    if !user_signed_in? || !current_user.admin?
       flash[:danger] = "You cannot edit this category"
       redirect_to categories_path
     else

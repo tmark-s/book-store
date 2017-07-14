@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -13,14 +14,11 @@ root 'bookstore#home'
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-get 'signup', to: 'users#new'
-resources :users, except: [:new]
 resources :categories, :books
 
-#login page
-get 'login', to: 'sessions#new'
-post 'login', to: 'sessions#create'
-delete 'logout', to: 'sessions#destroy'
+#User
+get 'users', to: 'users#index'
+get 'user/:id', to: 'users#show', as: 'user'
 
 #Wishlist
 get 'wishlist/:id', to: 'wishlists#create', as: 'wishlist'
